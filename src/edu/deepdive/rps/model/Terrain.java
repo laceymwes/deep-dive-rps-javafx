@@ -1,7 +1,5 @@
 package edu.deepdive.rps.model;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Terrain {
@@ -71,4 +69,20 @@ public class Terrain {
 
   // TODO Add public void mixing(int pairs) method. This should select a number of random pairs
   // (not necessarily adjacent) and swap the two members of the pair
+
+  public void mixing(int pairs) {
+    for (int i = 0; i < pairs; i++) {
+      int player1Row = rng.nextInt(cells.length);
+      int player1Col = rng.nextInt(cells[player1Row].length);
+      Breed player1 = cells[player1Row][player1Col];
+
+      int player2Row = rng.nextInt(cells.length);
+      int player2Col = rng.nextInt(cells[player2Row].length);
+      Breed player2 = cells[player2Row][player2Col];
+
+      Breed temp = player1;
+      cells[player1Row][player1Col] = player2;
+      cells[player2Row][player2Col] = temp;
+    }
+  }
 }

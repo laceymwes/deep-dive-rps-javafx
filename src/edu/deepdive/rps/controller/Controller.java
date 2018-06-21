@@ -109,7 +109,6 @@ public class Controller {
     }
   }
 
-
   private class Timer extends AnimationTimer {
 
     @Override
@@ -124,6 +123,8 @@ public class Controller {
     public void run() {
       while (running) {
         synchronized (lock) {
+          // TODO Invoke mixing method of model, using mixingSlider.getValue() to
+          terrain.mixing((int)mixingSlider.getValue());
           terrain.iterate(STEPS_PER_ITERATION);
         }
         try {
